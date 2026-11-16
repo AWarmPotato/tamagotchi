@@ -1,2 +1,2 @@
 # tamagotchi ₍ᐢ. ̫ .ᐢ₎
-tamagotchi project for my studie (learning javascript)
+tamagotchi project for my study (learning javascript)
