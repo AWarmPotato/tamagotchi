@@ -83,3 +83,23 @@
     border-radius: 50%;
     margin: 5px;
 }
+
+.buttons-left {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+#medicine-button {
+    margin-top: 25px;
+}
+
+.buttons-right {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+#play-button {
+    margin-top: 25px;
+}
