@@ -66,6 +66,10 @@
     transition: width 0.3s;
 }
 
+.critical {
+    background-color: red;
+}
+
 .bar-percentage {
     position: absolute;
     left: 5px;
