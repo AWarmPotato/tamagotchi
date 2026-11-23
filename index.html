@@ -12,11 +12,11 @@
 
 
     <main id="console">
-        <h1 id="pet-name">name</h1>
+        <h1 id="pet-name">Name</h1>
 
         <div id="main-screen">
-            <p>status:</p>
-            <img src="./images/tamogotchi-sprite.png" alt="Tamagotchi" id="tamagotchi"> 
+            <p>status: <span id="pet-status"></span></p>
+            <img src="./images/tamogotchi-sprite.png" alt="pet" id="pet"> 
 
         </div>
 
@@ -26,16 +26,38 @@
 
         <section id="console-bottom">
         
-        <button class="button-style">a</button>
-        <button class="button-style">b</button>
+        <button class="button-style" id="clean-button">A</button>
+        <button class="button-style" id="medicine-button">B</button>
 
         <div id="info-screen">
-            <p>hunger</p>
+            <div class="stat"> 
+                <p class="bar-text">hunger</p>
+                <div class="bar">
+                    <div id="hunger-bar" class="bar-fill"></div>
+                    <span id="hunger-text" class="bar-percentage">%</span>
+                </div>
+            </div>
+
+            <div class="stat"> 
+                <p class="bar-text">happiness</p>
+                <div class="bar">
+                    <div id="happiness-bar" class="bar-fill"></div>
+                    <span id="happiness-text" class="bar-percentage">%</span>
+                </div>
+            </div>
+
+            <div class="stat"> 
+                <p class="bar-text">health</p>
+                <div class="bar">
+                    <div id="healh-bar" class="bar-fill"></div>
+                    <span id="health-text" class="bar-percentage">%</span>
+                </div>
+            </div>
 
         </div>
 
-        <button class="button-style">c</button>
-        <button class="button-style">d</button>
+        <button class="button-style" id="play-button">C</button>
+        <button class="button-style" id="feed-button">D</button>
 
         </section>
 

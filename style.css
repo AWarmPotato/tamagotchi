@@ -18,11 +18,11 @@
 
 #main-screen {
     width: 550px;
-    height: 250px;
+    height: 275px;
     border: solid 1px black;
 }
 
-#tamagotchi {
+#pet {
     display: flex;
     justify-self: center;
 }
@@ -40,9 +40,37 @@
 }
 
 #info-screen {
+    padding: 10px;
     width: 400px;
-    height: 250px;
+    height: 225px;
     border: solid 1px black;
+}
+
+.bar-text {
+    margin-bottom: 0;
+}
+
+.bar {
+    width: 100%;
+    height: 20px;
+    border: solid 1px gray;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    width: 50%;
+    height: 100%;
+    background-color: green;
+    transition: width 0.3s;
+}
+
+.bar-percentage {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .button-style {
