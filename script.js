@@ -5,11 +5,15 @@ const CRITICAL_LIMIT = 30;
 
 // info/state of the pet
 let pet = {
+    name: "",
     hunger: 100,
     happiness: 100,
 };
 
 //elements
+const nameError = document.getElementById("name-error");
+const startButton = document.getElementById("start-button");
+
 const cleanButton =  document.getElementById("clean-button");
 const medicineButton = document.getElementById("medicine-button");
 
@@ -25,8 +29,31 @@ const happinessText = document.getElementById("happiness-text");
 const healthBar = document.getElementById("health-bar");
 const healthText = document.getElementById("health-text");
 
+startButton.addEventListener("click", startGame);
+
+function startGame() {
+    const nameInput = document.getElementById("name-input").value.trim();
+    const startScreen = document.getElementById("start-screen");
+    const gameConsole = document.getElementById("console");
+
+    if (nameInput === "") {
+        nameError.classList.remove("hidden");
+        return
+    }   else {
+        startScreen.classList.add("hidden");
+        gameConsole.classList.remove("hidden");
+    }
+
+    pet.name = nameInput
+    render();
+    console.log(pet.name);
+}
+
 //render the bars and make them red at 30 or lower
 function render() {
+    const finalName = document.getElementById("pet-name");
+    finalName.textContent = pet.name;
+
     hungerBar.style.width = pet.hunger + "%"; 
     hungerText.textContent = pet.hunger + "%";
 

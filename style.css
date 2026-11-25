@@ -4,6 +4,10 @@
     justify-self: end;
 }
 
+.hidden {
+    display: none !important;
+}
+
 #console {
     display: flex;
     flex-direction: column;

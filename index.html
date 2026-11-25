@@ -10,9 +10,17 @@
 
     <button id="reset-button">restart</button>
 
+    <section id="start-screen">
+        <p>name your tamagotchi:</p>
+        <input type="text" maxlength="15" id="name-input">
+        <button id="start-button">Start game</button>
 
-    <main id="console">
-        <h1 id="pet-name">Name</h1>
+        <p id="name-error" class="hidden">You entered an invalid name</p>
+    </section> 
+
+
+    <main id="console" class="hidden">
+        <h1 id="pet-name"></h1>
 
         <div id="main-screen">
             <p>status: <span id="pet-status"></span></p>
