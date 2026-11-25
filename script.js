@@ -41,6 +41,7 @@ function startGame() {
         return
     }   else {
         startScreen.classList.add("hidden");
+        nameError.classList.add("hidden");
         gameConsole.classList.remove("hidden");
     }
 
