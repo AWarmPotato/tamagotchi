@@ -3,6 +3,10 @@ const FEED_VALUE = 20;
 const PLAY_VALUE = 15;
 const CRITICAL_LIMIT = 30;
 
+const TICK_INTERVAL = 5000;
+const HUNGER_DECLINE = 2;
+const HAPPINESS_DECLINE = 1;
+
 // info/state of the pet
 let pet = {
     name: "",
@@ -29,6 +33,14 @@ const happinessText = document.getElementById("happiness-text");
 const healthBar = document.getElementById("health-bar");
 const healthText = document.getElementById("health-text");
 
+let gameTimer;
+
+function tick() {
+    pet.hunger = clamp(pet.hunger - HUNGER_DECLINE);
+    pet.happiness = clamp(pet.happiness - HAPPINESS_DECLINE);
+    render();
+}
+
 startButton.addEventListener("click", startGame);
 
 function startGame() {
@@ -44,10 +56,11 @@ function startGame() {
         nameError.classList.add("hidden");
         gameConsole.classList.remove("hidden");
     }
-
-    pet.name = nameInput
+    pet.name = nameInput;
     render();
-    console.log(pet.name);
+    
+    const gameTimer = setInterval(tick, TICK_INTERVAL);
+
 }
 
 //render the bars and make them red at 30 or lower
