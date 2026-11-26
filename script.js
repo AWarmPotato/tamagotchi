@@ -5,18 +5,25 @@ const CRITICAL_LIMIT = 30;
 
 const TICK_INTERVAL = 5000;
 const HUNGER_DECLINE = 2;
-const HAPPINESS_DECLINE = 1;
+const HAPPINESS_DECLINE = 2;
 
 // info/state of the pet
-let pet = {
+const baseState = {    
     name: "",
     hunger: 100,
     happiness: 100,
 };
 
+let pet = { ...baseState };
+
 //elements
 const nameError = document.getElementById("name-error");
+
 const startButton = document.getElementById("start-button");
+const resetButton = document.getElementById("reset-button");
+
+const startScreen = document.getElementById("start-screen");
+const gameConsole = document.getElementById("console");
 
 const cleanButton =  document.getElementById("clean-button");
 const medicineButton = document.getElementById("medicine-button");
@@ -35,18 +42,17 @@ const healthText = document.getElementById("health-text");
 
 let gameTimer;
 
+//decline every tick
 function tick() {
     pet.hunger = clamp(pet.hunger - HUNGER_DECLINE);
     pet.happiness = clamp(pet.happiness - HAPPINESS_DECLINE);
     render();
 }
 
+//give name and start gameTimer
 startButton.addEventListener("click", startGame);
-
 function startGame() {
     const nameInput = document.getElementById("name-input").value.trim();
-    const startScreen = document.getElementById("start-screen");
-    const gameConsole = document.getElementById("console");
 
     if (nameInput === "") {
         nameError.classList.remove("hidden");
@@ -55,12 +61,32 @@ function startGame() {
         startScreen.classList.add("hidden");
         nameError.classList.add("hidden");
         gameConsole.classList.remove("hidden");
+        resetButton.classList.remove("hidden");
     }
     pet.name = nameInput;
     render();
     
-    const gameTimer = setInterval(tick, TICK_INTERVAL);
+    clearInterval(gameTimer);
+    gameTimer = setInterval(tick, TICK_INTERVAL);
+}
 
+//Reset whole game back to name input
+resetButton.addEventListener("click", restartGame);
+function restartGame() {
+    const nameInput = document.getElementById("name-input");
+
+    if (confirm("Are you sure you want to restart?")) {
+        clearInterval(gameTimer);
+        pet = { ...baseState };
+        nameInput.value = "";
+
+        startScreen.classList.remove("hidden");
+        gameConsole.classList.add("hidden");
+        resetButton.classList.add("hidden");
+    } else {
+        return
+    }
+    render();
 }
 
 //render the bars and make them red at 30 or lower
